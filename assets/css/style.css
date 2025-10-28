@@ -52,18 +52,26 @@
         grid-column: span 1;
         width: 95%;
     }
-    nav a { display: block; margin: var(--space-1) 0; }
 }
 
 /* Mobile padrão (481px — 768px) */
 @media (max-width: 768px) {
+    .navbar {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 var(--space-4);
+    }
+    .navbar .logo {
+        font-size: var(--font-sm);
+    }
     section {
         grid-column: span 12;
         width: 100%;
     }
     nav {
-        display: flex;
-        flex-direction: column;
+        flex-direction: row;
         gap: var(--space-1);
     }
 }
@@ -124,20 +132,22 @@ main {
     grid-template-columns: repeat(12, 1fr);
     gap: var(--space-3);
     padding: var(--space-4);
-    padding: 20px;
     text-align: center;
-    max-width: 1200px; 
-    margin: 0 auto; 
-    width: 100%; /* Evita estourar no mobile */
+    max-width: 1200px; /* Limite a largura máxima */
+    margin: 0 auto;   /* Centraliza o main horizontalmente */
+    width: 90%;       /* Garante que o elemento seja responsivo */
 }
+
 
 header{
     background-color: var(--color-primary);
     color: var(--color-neutral-100);
     padding: var(--space-5);
     text-align: center;
-    font-size: var(--font-lg);
+}
 
+header h1 {
+    display: none; /* Oculta o h1, pois o logo já está na navbar */
 }
 
 h1{
@@ -160,108 +170,162 @@ p{
     padding: var(--space-2);
 }
 
-/* ========== MENU DESKTOP =========== */
+/* NOVOS ESTILOS DO HAMBÚRGUER */
+
 .navbar {
-    background: var(--color-primary);
-    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: var(--space-2) var(--space-4);
+    padding: 0 var(--space-4);
 }
 
-.logo {
+.navbar .logo {
     font-size: var(--font-md);
     font-weight: bold;
 }
 
-.menu {
-    list-style: none;
+/* Oculta o checkbox */
+#menuToggle {
+    display: none;
+}
+
+/* Estilo do ícone hambúrguer */
+.menu-hamburguer {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    cursor: pointer;
+    display: none; /* Escondido por padrão em telas grandes */
+    z-index: 99; /* Garante que fique acima de outros elementos */
+}
+
+.menu-hamburguer span {
+    display: block;
+    height: 4px;
+    width: 100%;
+    background-color: var(--color-neutral-100);
+    border-radius: 2px;
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.menu-hamburguer span:nth-child(1) { top: 0; }
+.menu-hamburguer span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+.menu-hamburguer span:nth-child(3) { bottom: 0; }
+
+/* Estilo do menu principal */
+.navbar .menu {
     display: flex;
-    gap: var(--space-2);
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-.menu li a {
-    color: white;
-    padding: 10px;
+.navbar .menu li a {
+    color: var(--color-neutral-100);
     text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+    transition: background-color 0.3s;
 }
 
-.menu li a:hover {
-    text-decoration: underline;
+.navbar .menu li a:hover {
+    background-color: var(--color-primary-dark);
 }
 
-/* Dropdown */
+/* Estilização do dropdown */
 .dropdown {
     position: relative;
 }
 
+.dropbtn {
+    padding-right: 25px; /* Espaço para o ícone de seta */
+}
+
 .submenu {
+    display: none;
     position: absolute;
-    top: 40px;
+    top: 100%;
     left: 0;
-    background: var(--color-primary-dark);
+    background-color: var(--color-primary-dark);
+    min-width: 150px;
+    z-index: 10;
     list-style: none;
     padding: 0;
-    display: none;
-    min-width: 140px;
-    border-radius: 5px;
+    margin: 0;
 }
 
 .submenu li a {
+    color: var(--color-neutral-100);
+    padding: 12px 15px;
+    text-decoration: none;
     display: block;
-    padding: 10px;
-    color: white;
+}
+
+.submenu li a:hover {
+    background-color: #575757;
 }
 
 .dropdown:hover .submenu {
     display: block;
 }
 
-/* ========== MENU MOBILE =========== */
-.hamburger {
-    display: none;
-    font-size: 28px;
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-}
-
+/* MEDIA QUERIES PARA MOBILE */
 @media (max-width: 768px) {
-
-    .hamburger {
-        display: block;
+    .menu-hamburguer {
+        display: block; /* Mostra o ícone em mobile */
     }
 
-    .menu {
-        display: none;
-        position: absolute;
-        top: 70px;
-        right: 0;
-        background: var(--color-primary);
-        width: 200px;
+    .navbar .menu {
+        position: fixed;
+        top: 0;
+        right: -100%; /* Esconde o menu fora da tela */
+        width: 100%;
+        height: 100vh;
+        background-color: var(--color-primary);
         flex-direction: column;
-        padding: var(--space-2);
-        border-radius: 5px;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.3s ease-in-out;
+        z-index: 1;
+    }
+    
+    .navbar .menu li {
+        margin: 20px 0;
+        text-align: center;
     }
 
-    .menu.show {
-        display: flex;
+    .dropdown:hover .submenu {
+        display: none; /* Desabilita o hover do dropdown em mobile */
     }
-
+    
     .submenu {
-        position: static;
-        display: none;
-        padding-left: 15px;
+        position: static; /* Ajusta o submenu para ser vertical */
+        background-color: var(--color-primary-dark);
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* Mostra o menu quando o checkbox está marcado */
+    #menuToggle:checked ~ .menu {
+        right: 0;
     }
 
-    .dropdown:active .submenu {
-        display: block;
+    /* Animação do ícone para se transformar em "X" */
+    #menuToggle:checked + .menu-hamburguer span:nth-child(1) {
+        transform: rotate(45deg);
+        top: 13px;
+    }
+    #menuToggle:checked + .menu-hamburguer span:nth-child(2) {
+        opacity: 0;
+    }
+    #menuToggle:checked + .menu-hamburguer span:nth-child(3) {
+        transform: rotate(-45deg);
+        top: 13px;
     }
 }
-
-
+    
 section{
     background: var(--color-neutral-100);
     padding: 15px;
@@ -344,4 +408,3 @@ footer a{
     font-weight: bold;
     color: var(--color-neutral-100);
 }
-

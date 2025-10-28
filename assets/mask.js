@@ -24,7 +24,27 @@ document.getElementById("cep").addEventListener("input", function() {
 
 const hamburger = document.querySelector(".hamburger");
 const menu = document.querySelector(".menu");
+const dropBtns = document.querySelectorAll(".dropbtn");
 
+// abrir/fechar menu mobile
 hamburger.addEventListener("click", () => {
-    menu.classList.toggle("show");
+  menu.classList.toggle("show");
 });
+
+// abrir/fechar submenu mobile
+dropBtns.forEach(btn => {
+  btn.addEventListener("click", e => {
+    e.preventDefault(); // evita navegação
+    const parent = btn.parentElement;
+    parent.classList.toggle("active");
+  });
+});
+
+// fechar menu ao clicar em qualquer link
+menu.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    menu.classList.remove("show");
+    dropBtns.forEach(btn => btn.parentElement.classList.remove("active"));
+  });
+});
+
