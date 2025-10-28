@@ -21,3 +21,10 @@ document.getElementById("cep").addEventListener("input", function() {
     value = value.replace(/(\d{5})(\d)/, "$1-$2");
     this.value = value;
 });
+
+const hamburger = document.querySelector(".hamburger");
+const menu = document.querySelector(".menu");
+
+hamburger.addEventListener("click", () => {
+    menu.classList.toggle("show");
+});
