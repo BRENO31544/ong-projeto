@@ -1,0 +1,44 @@
+/*GRID PRINCIPAL*/
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.grid-12{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--space-16)
+}
+
+.col-1 { grid-column: span 1; }
+.col-2 { grid-column: span 2; }
+.col-3 { grid-column: span 3; }
+.col-4 { grid-column: span 4; }
+.col-6 { grid-column: span 6; }
+.col-12 { grid-column: span 12; }
+
+/* FLEXBOX */
+
+.flex {
+    display: flex;
+}
+
+.flex-center { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flex-between { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16)
+}
