@@ -78,3 +78,54 @@ README.md → documentação e instruções do projeto
 - Organização de pastas e arquivos de forma clara
 
 ---
+# ONG Sabedoria e Alegria — Website Institucional
+
+Este projeto foi desenvolvido como parte da disciplina de **Desenvolvimento Front End para Web** do curso de **Análise e Desenvolvimento de Sistemas**.  
+O objetivo é criar um site institucional moderno, acessível e responsivo para apresentar os projetos da ONG, incentivar doações e atrair voluntários.
+
+---
+
+## Requisitos Implementados
+
+### Sistema de Design
+-  Design System estruturado com variáveis CSS (`:root`)
+-  Paleta com mais de **8 cores** (primárias, secundárias e neutras)
+-  Hierarquia tipográfica com **5 tamanhos de fonte**
+-  Sistema de espaçamento modular:
+  - `8px, 16px, 24px, 32px, 48px, 64px`
+
+---
+
+### Leiautes Responsivos — Flexbox + Grid
+-  Grid principal para estrutura geral da página
+-  Sistema de Grid customizado (12 colunas)
+-  Quebra responsiva com **mínimo de 5 breakpoints**
+-  Layouts específicos para diferentes telas (Mobile, Tablet e Desktop)
+
+---
+
+### Navegação Interativa
+-  Menu principal responsivo
+-  Menu hambúrguer no mobile
+-  Submenu **dropdown**
+
+---
+
+### Componentes de Interface
+Componente  Status 
+
+ Cards responsivos para projetos;
+ Botões com estados hover, focus, active e disabled; 
+ Formulários com validação visual;
+ Modal de feedback;
+ Sistema de badges/tags para projetos; 
+
+---
+
+## Tecnologias Utilizadas
+- **HTML5**
+- **CSS3 (Grid + Flexbox)**
+- **JavaScript ES6**
+- **Git e GitHub**
+
+---
