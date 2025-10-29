@@ -48,3 +48,8 @@ menu.querySelectorAll("a").forEach(link => {
   });
 });
 
+const modal = document.getElementById('modal');
+document.getElementById('openModal').onclick = () => modal.style.display = 'flex';
+document.getElementById('closeModal').onclick = () => modal.style.display = 'none';
+window.onclick = (e) => { if(e.target === modal) modal.style.display = 'none'; }
+
